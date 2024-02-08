@@ -187,7 +187,11 @@ export const tech: Tech[] = [
 		name: 'Photon',
 		image:
 			'https://raw.githubusercontent.com/MarcinSkic/GenericMultiplayerCardGame/main/readme-icons/photon.png?token=GHSAT0AAAAAAB5FZLHGLG3QYG6S6QSUBNDCZOFG55Q',
-		webLink: 'https://www.photonengine.com'
+		webLink: 'https://www.photonengine.com',
+		dimensions: {
+			heightRatio: 1,
+			widthRatio: 2.5
+		}
 	},
 	{
 		name: 'Arduino',
@@ -227,7 +231,11 @@ export const tech: Tech[] = [
 	{
 		name: 'GO',
 		image: 'https://api.iconify.design/logos:go.svg',
-		webLink: 'https://go.dev'
+		webLink: 'https://go.dev',
+		dimensions: {
+			heightRatio: 1,
+			widthRatio: 1.5
+		}
 	},
 	{
 		name: 'Docker',

@@ -1,11 +1,20 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
-	import type { Tech } from '$lib/tech';
+	import type { Tech, TechInList } from '$lib/tech';
+	import { onMount } from 'svelte';
 
-	export let tech: Tech & { selected?: boolean };
+	export let tech: TechInList;
+	let img: HTMLImageElement;
+	let height = 4;
+	let width = 4;
 
 	function toggleSelection() {
 		tech.selected = !tech.selected;
+	}
+
+	if (tech.dimensions) {
+		height *= tech.dimensions.heightRatio;
+		width *= tech.dimensions.widthRatio;
 	}
 </script>
 
@@ -19,17 +28,31 @@
 		}
 	}}
 >
-	<Card.Root class="transition-colors hover:border-primary">
+	<Card.Root class="cursor-pointer transition-colors hover:border-primary">
 		<Card.Header>
 			<Card.Title>{tech.name}</Card.Title>
 		</Card.Header>
 		<Card.Content>
 			{#if typeof tech.image === 'string'}
-				<img src={tech.image} alt={tech.name} class="aspect-square w-12" />
+				<img
+					src={tech.image}
+					alt={tech.name}
+					style:--width="{width}rem"
+					style:--height="{height}rem"
+					class="h-[--height] w-[--width] object-contain"
+					bind:this={img}
+				/>
 			{:else}
 				<picture>
 					<source media="(prefers-color-scheme: light)" srcset={tech.image.dark} />
-					<img src={tech.image.light} alt={tech.name} class="aspect-square w-12" />
+					<img
+						src={tech.image.light}
+						alt={tech.name}
+						style:--width="{width}rem"
+						style:--height="{height}rem"
+						class="h-[--height] w-[--width] object-contain"
+						bind:this={img}
+					/>
 				</picture>
 			{/if}
 		</Card.Content>
