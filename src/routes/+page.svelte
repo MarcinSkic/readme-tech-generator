@@ -45,7 +45,7 @@
 		</div>
 	</Collapsible.Content>
 </Collapsible.Root>
-<div class="m-4">
+<div class="m-4 pb-4">
 	<h4 class="p-4 text-base font-semibold">Technologies</h4>
 	<div
 		role="grid"
