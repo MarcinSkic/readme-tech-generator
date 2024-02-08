@@ -57,7 +57,7 @@
 	</div>
 </div>
 
-<style lang="postCSS">
+<style lang="postcss">
 	.selected-open {
 		@apply rotate-180;
 	}
