@@ -22,16 +22,17 @@
 	}
 </script>
 
-<div class="curstom-scrollbar relative m-4 min-h-20 overflow-auto rounded-xl bg-stone-900 p-4">
+<div class="relative m-4 rounded-xl bg-stone-900">
 	<Button
 		variant="ghost"
 		size="icon"
-		class="absolute right-2 top-2 box-content p-1 text-stone-50 hover:bg-stone-700 hover:text-stone-50"
+		class="absolute right-3 top-3 box-content p-1 text-stone-50 hover:bg-stone-700 hover:text-stone-50"
 		on:click={onCopy}
 	>
 		<Copy />
 	</Button>
-	<pre><code>{@html highlighted}</code></pre>
+	<pre class="curstom-scrollbar max-h-72 min-h-20 overflow-auto p-4"><code>{@html highlighted}</code
+		></pre>
 </div>
 
 <style lang="postcss">
