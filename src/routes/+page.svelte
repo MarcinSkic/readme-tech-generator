@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { Input } from '$lib/components/ui/input';
-	import { tech as importedTech, type Tech } from '$lib/tech';
+	import { tech as importedTech, type Tech, type TechInList } from '$lib/tech';
 	import * as Collapsible from '$lib/components/ui/collapsible';
 	import TechCard from '$lib/components/ui/techCard/TechCard.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { ChevronUp } from 'lucide-svelte';
 	import Fuse from 'fuse.js';
+	import { Separator } from '$lib/components/ui/separator';
+	import CodeBlock from '$lib/components/ui/codeBlock/CodeBlock.svelte';
 
-	const techList: (Tech & { selected?: boolean })[] = importedTech.toSorted((a, b) => {
+	const techList: TechInList[] = importedTech.toSorted((a, b) => {
 		const aN = a.name.toUpperCase();
 		const bN = b.name.toUpperCase();
 
@@ -35,11 +37,37 @@
 
 	let searchQuery = '';
 	let selectedOpen = false;
+	$: code = getCode(techList);
+
+	function getCode(techList: TechInList[]) {
+		const defaultSize_px = 26;
+		const header = `---
+
+### Used technologies
+
+`;
+
+		return techList
+			.filter((t) => t.selected)
+			.reduce((text, tech) => {
+				const width = defaultSize_px * (tech.dimensions?.widthRatio ?? 1);
+				const height = defaultSize_px * (tech.dimensions?.heightRatio ?? 1);
+				let picture = '';
+
+				if (typeof tech.image === 'string') {
+					picture = `<img align="left" width="${width}" height="${height}" alt="${tech.name}" src="${tech.image}" style="padding: 0 20px 16px 0">`;
+				} else {
+					picture = `<picture align="left" style="padding: 0 20px 16px 0"><source media="(prefers-color-scheme: light)" srcset="${tech.image.dark}" /><img align="left" width="${width}" height="${height}" alt="${tech.name}" src="${tech.image.light}" /></picture>`;
+				}
+
+				return (text += `[${picture}](${tech.webLink})\n`);
+			}, header);
+	}
 </script>
 
-<Input bind:value={searchQuery} placeholder="Search" class="h-fit text-2xl" />
-
-<Collapsible.Root bind:open={selectedOpen} class="m-4 space-y-4">
+<CodeBlock {code} />
+<Separator />
+<Collapsible.Root bind:open={selectedOpen} class="mx-4 mt-2 space-y-4">
 	<Collapsible.Trigger>
 		<Button variant="ghost" class="gap-1">
 			<h4 class="text-base font-semibold">Selected</h4>
@@ -59,8 +87,9 @@
 		</div>
 	</Collapsible.Content>
 </Collapsible.Root>
-<div class="m-4 pb-4">
+<div class="mx-4 pb-4">
 	<h4 class="p-4 text-base font-semibold">Technologies</h4>
+	<Input bind:value={searchQuery} placeholder="Search" class="mb-4 h-fit text-2xl" />
 	<div
 		role="grid"
 		class="grid auto-rows-auto grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4"
