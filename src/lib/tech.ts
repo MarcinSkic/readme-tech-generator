@@ -105,7 +105,10 @@ export const tech: Tech[] = [
 	},
 	{
 		name: 'Apple',
-		image: 'https://api.iconify.design/cib:apple.svg?color=%23ffffff',
+		image: {
+			light: 'https://api.iconify.design/cib:apple.svg?color=%23ffffff',
+			dark: 'https://api.iconify.design/cib:apple.svg?color=%23000000'
+		},
 		webLink: 'https://www.apple.com'
 	},
 	{
@@ -185,13 +188,8 @@ export const tech: Tech[] = [
 	},
 	{
 		name: 'Photon',
-		image:
-			'https://raw.githubusercontent.com/MarcinSkic/GenericMultiplayerCardGame/main/readme-icons/photon.png?token=GHSAT0AAAAAAB5FZLHGLG3QYG6S6QSUBNDCZOFG55Q',
-		webLink: 'https://www.photonengine.com',
-		dimensions: {
-			heightRatio: 1,
-			widthRatio: 2.5
-		}
+		image: 'https://api.iconify.design/devicon:photonengine.svg',
+		webLink: 'https://www.photonengine.com'
 	},
 	{
 		name: 'Arduino',
