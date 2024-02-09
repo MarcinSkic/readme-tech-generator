@@ -2,6 +2,8 @@
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
 	import '../app.pcss';
+	import { ModeWatcher, setMode } from 'mode-watcher';
+	import { Toaster } from '$lib/components/ui/sonner';
 
 	const links = [
 		{
@@ -9,8 +11,11 @@
 			href: '/'
 		}
 	];
+	setMode('dark');
 </script>
 
+<Toaster />
+<ModeWatcher />
 <header>
 	<nav>
 		{#each links as link}
