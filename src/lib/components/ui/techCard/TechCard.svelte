@@ -1,7 +1,6 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
-	import type { Tech, TechInList } from '$lib/tech';
-	import { onMount } from 'svelte';
+	import type { TechInList } from '$lib/tech';
 
 	export let tech: TechInList;
 	let img: HTMLImageElement;
