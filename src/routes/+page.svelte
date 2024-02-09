@@ -5,6 +5,7 @@
 	import TechCard from '$lib/components/ui/techCard/TechCard.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { ChevronUp } from 'lucide-svelte';
+	import Fuse from 'fuse.js';
 
 	const techList: (Tech & { selected?: boolean })[] = importedTech.toSorted((a, b) => {
 		const aN = a.name.toUpperCase();
@@ -18,6 +19,19 @@
 			return 0;
 		}
 	});
+
+	let availableTechnologies = techList.filter((t) => !t.selected);
+	$: {
+		availableTechnologies = techList.filter((t) => !t.selected);
+		if (searchQuery !== '') {
+			const fuse = new Fuse(availableTechnologies, {
+				keys: ['name'],
+				threshold: 0.4
+			});
+
+			availableTechnologies = fuse.search(searchQuery).map((i) => i.item);
+		}
+	}
 
 	let searchQuery = '';
 	let selectedOpen = false;
@@ -51,7 +65,7 @@
 		role="grid"
 		class="grid auto-rows-auto grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4"
 	>
-		{#each techList.filter((t) => !t.selected) as tech}
+		{#each availableTechnologies as tech}
 			<TechCard bind:tech />
 		{/each}
 	</div>
