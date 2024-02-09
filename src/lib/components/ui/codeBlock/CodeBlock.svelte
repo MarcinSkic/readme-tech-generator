@@ -1,0 +1,53 @@
+<script lang="ts">
+	import hljs from 'highlight.js/lib/core';
+	import markdown from 'highlight.js/lib/languages/markdown';
+	import 'highlight.js/styles/atom-one-dark-reasonable.css';
+	import { Button } from '../button';
+	import { Copy } from 'lucide-svelte';
+	import { toast } from 'svelte-sonner';
+
+	export let code: string;
+	let highlighted = '';
+
+	hljs.registerLanguage('markdown', markdown);
+	$: if (code) {
+		highlighted = hljs.highlight(code, {
+			language: 'markdown'
+		}).value;
+	}
+
+	function onCopy() {
+		navigator.clipboard.writeText(code);
+		toast('Copied to clipboard');
+	}
+</script>
+
+<div class="curstom-scrollbar relative m-4 min-h-20 overflow-auto rounded-xl bg-stone-900 p-4">
+	<Button
+		variant="ghost"
+		size="icon"
+		class="absolute right-2 top-2 box-content p-1 text-stone-50 hover:bg-stone-700 hover:text-stone-50"
+		on:click={onCopy}
+	>
+		<Copy />
+	</Button>
+	<pre><code>{@html highlighted}</code></pre>
+</div>
+
+<style lang="postcss">
+	.curstom-scrollbar::-webkit-scrollbar {
+		@apply w-2.5;
+		@apply h-2.5;
+	}
+
+	.curstom-scrollbar::-webkit-scrollbar-thumb {
+		@apply bg-muted-foreground;
+		@apply rounded-md;
+	}
+
+	.curstom-scrollbar::-webkit-scrollbar-track {
+		@apply bg-muted;
+		@apply rounded-es-md;
+		@apply rounded-ee-md;
+	}
+</style>
