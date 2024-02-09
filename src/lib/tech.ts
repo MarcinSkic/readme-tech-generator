@@ -6,6 +6,7 @@ export interface Tech {
 		widthRatio: number;
 		heightRatio: number;
 	};
+	tags?: string[];
 }
 
 export type TechInList = Tech & {
@@ -41,27 +42,32 @@ export const tech: Tech[] = [
 	{
 		name: 'PyTorch',
 		image: 'https://api.iconify.design/devicon:pytorch.svg',
-		webLink: 'https://pytorch.org/'
+		webLink: 'https://pytorch.org/',
+		tags: ['python', 'ai']
 	},
 	{
 		name: 'scikit-learn',
 		image: 'https://api.iconify.design/devicon:scikitlearn.svg',
-		webLink: 'https://scikit-learn.org/stable/'
+		webLink: 'https://scikit-learn.org/stable/',
+		tags: ['python', 'ai']
 	},
 	{
 		name: 'Matplotlib',
 		image: 'https://api.iconify.design/devicon:matplotlib.svg',
-		webLink: 'https://matplotlib.org'
+		webLink: 'https://matplotlib.org',
+		tags: ['python', 'ai']
 	},
 	{
 		name: 'Numpy',
 		image: 'https://api.iconify.design/devicon:numpy.svg',
-		webLink: 'https://numpy.org/'
+		webLink: 'https://numpy.org/',
+		tags: ['python', 'ai']
 	},
 	{
 		name: 'Anaconda',
 		image: 'https://api.iconify.design/devicon:anaconda.svg',
-		webLink: 'https://www.anaconda.com/'
+		webLink: 'https://www.anaconda.com/',
+		tags: ['python', 'ai']
 	},
 	{
 		name: 'Jupyter',
@@ -76,12 +82,14 @@ export const tech: Tech[] = [
 	{
 		name: 'Android Studio',
 		image: 'https://api.iconify.design/devicon:androidstudio.svg',
-		webLink: 'https://developer.android.com/studio'
+		webLink: 'https://developer.android.com/studio',
+		tags: ['java', 'kotlin']
 	},
 	{
 		name: 'Bootstrap',
 		image: 'https://api.iconify.design/devicon:bootstrap.svg',
-		webLink: 'https://getbootstrap.com'
+		webLink: 'https://getbootstrap.com',
+		tags: ['css']
 	},
 	{
 		name: 'Apache',
@@ -91,7 +99,8 @@ export const tech: Tech[] = [
 	{
 		name: '.NET',
 		image: 'https://api.iconify.design/logos:dotnet.svg',
-		webLink: 'https://learn.microsoft.com/en-us/dotnet/'
+		webLink: 'https://learn.microsoft.com/en-us/dotnet/',
+		tags: ['c#', 'csharp', 'dotnet']
 	},
 	{
 		name: 'Linux',
@@ -101,7 +110,8 @@ export const tech: Tech[] = [
 	{
 		name: 'NodeJS',
 		image: 'https://api.iconify.design/devicon:nodejs.svg',
-		webLink: 'https://nodejs.org/en'
+		webLink: 'https://nodejs.org/en',
+		tags: ['typescript', 'javascript', 'expressjs']
 	},
 	{
 		name: 'Apple',
@@ -109,12 +119,14 @@ export const tech: Tech[] = [
 			light: 'https://api.iconify.design/cib:apple.svg?color=%23ffffff',
 			dark: 'https://api.iconify.design/cib:apple.svg?color=%23000000'
 		},
-		webLink: 'https://www.apple.com'
+		webLink: 'https://www.apple.com',
+		tags: ['swift']
 	},
 	{
 		name: 'Jest',
 		image: 'https://api.iconify.design/logos:jest.svg',
-		webLink: 'https://jestjs.io'
+		webLink: 'https://jestjs.io',
+		tags: ['typescript', 'javascript']
 	},
 	{
 		name: 'Vite',
@@ -129,12 +141,14 @@ export const tech: Tech[] = [
 	{
 		name: 'Swift',
 		image: 'https://api.iconify.design/devicon:swift.svg',
-		webLink: 'https://www.swift.org'
+		webLink: 'https://www.swift.org',
+		tags: ['apple']
 	},
 	{
 		name: 'TensorFlow',
 		image: 'https://api.iconify.design/devicon:tensorflow.svg',
-		webLink: 'https://www.tensorflow.org'
+		webLink: 'https://www.tensorflow.org',
+		tags: ['python']
 	},
 	{
 		name: 'MySQL',
@@ -149,12 +163,14 @@ export const tech: Tech[] = [
 	{
 		name: 'PHP',
 		image: 'https://api.iconify.design/devicon:php.svg',
-		webLink: 'https://www.php.net'
+		webLink: 'https://www.php.net',
+		tags: ['laravel']
 	},
 	{
 		name: 'Laravel',
 		image: 'https://api.iconify.design/devicon:laravel.svg',
-		webLink: 'https://laravel.com'
+		webLink: 'https://laravel.com',
+		tags: ['php']
 	},
 	{
 		name: 'Bash',
@@ -164,32 +180,38 @@ export const tech: Tech[] = [
 	{
 		name: 'Qt',
 		image: 'https://api.iconify.design/devicon:qt.svg',
-		webLink: 'https://www.qt.io'
+		webLink: 'https://www.qt.io',
+		tags: ['c++', 'cpp']
 	},
 	{
 		name: 'C++',
 		image: 'https://api.iconify.design/devicon:cplusplus.svg',
-		webLink: 'https://en.wikipedia.org/wiki/C%2B%2B'
+		webLink: 'https://en.wikipedia.org/wiki/C%2B%2B',
+		tags: ['qt', 'cpp']
 	},
 	{
 		name: 'Webpack',
 		image: 'https://api.iconify.design/logos:webpack.svg',
-		webLink: 'https://webpack.js.org'
+		webLink: 'https://webpack.js.org',
+		tags: ['react']
 	},
 	{
 		name: 'C Embedded',
 		image: 'https://api.iconify.design/devicon:embeddedc.svg',
-		webLink: 'https://en.wikipedia.org/wiki/Embedded_C'
+		webLink: 'https://en.wikipedia.org/wiki/Embedded_C',
+		tags: ['c']
 	},
 	{
 		name: 'C',
 		image: 'https://api.iconify.design/devicon:c.svg',
-		webLink: 'https://en.wikipedia.org/wiki/C_(programming_language)'
+		webLink: 'https://en.wikipedia.org/wiki/C_(programming_language)',
+		tags: ['embedded c']
 	},
 	{
 		name: 'Photon',
 		image: 'https://api.iconify.design/devicon:photonengine.svg',
-		webLink: 'https://www.photonengine.com'
+		webLink: 'https://www.photonengine.com',
+		tags: ['unity', 'c#', 'csharp']
 	},
 	{
 		name: 'Arduino',
@@ -199,27 +221,32 @@ export const tech: Tech[] = [
 	{
 		name: 'Bevy',
 		image: 'https://api.iconify.design/skill-icons:bevy-dark.svg',
-		webLink: 'https://bevyengine.org'
+		webLink: 'https://bevyengine.org',
+		tags: ['rust']
 	},
 	{
 		name: 'Phoenix',
 		image: 'https://api.iconify.design/devicon:phoenix.svg',
-		webLink: 'https://www.phoenixframework.org'
+		webLink: 'https://www.phoenixframework.org',
+		tags: ['elixir']
 	},
 	{
 		name: 'Elixir',
 		image: 'https://api.iconify.design/devicon:elixir.svg',
-		webLink: 'https://elixir-lang.org'
+		webLink: 'https://elixir-lang.org',
+		tags: ['phoenix']
 	},
 	{
 		name: 'SolidJS',
 		image: 'https://api.iconify.design/devicon:solidjs.svg',
-		webLink: 'https://www.solidjs.com'
+		webLink: 'https://www.solidjs.com',
+		tags: ['vite']
 	},
 	{
 		name: 'Tauri',
 		image: 'https://api.iconify.design/devicon:tauri.svg',
-		webLink: 'https://tauri.app'
+		webLink: 'https://tauri.app',
+		tags: ['typescript', 'javascript', 'rust']
 	},
 	{
 		name: 'Godot',
@@ -243,7 +270,8 @@ export const tech: Tech[] = [
 	{
 		name: 'Spring',
 		image: 'https://api.iconify.design/logos:spring-icon.svg',
-		webLink: 'https://spring.io'
+		webLink: 'https://spring.io',
+		tags: ['java', 'kotlin']
 	},
 	{
 		name: 'Neo4j',
@@ -258,32 +286,38 @@ export const tech: Tech[] = [
 	{
 		name: 'TailwindCSS',
 		image: 'https://api.iconify.design/devicon:tailwindcss.svg',
-		webLink: 'https://tailwindcss.com'
+		webLink: 'https://tailwindcss.com',
+		tags: ['css']
 	},
 	{
 		name: 'Svelte',
 		image: 'https://api.iconify.design/devicon:svelte.svg',
-		webLink: 'https://svelte.dev'
+		webLink: 'https://svelte.dev',
+		tags: ['typescript', 'javascript', 'vite']
 	},
 	{
 		name: 'Kotlin',
 		image: 'https://api.iconify.design/devicon:kotlin.svg',
-		webLink: 'https://kotlinlang.org'
+		webLink: 'https://kotlinlang.org',
+		tags: ['spring', 'android']
 	},
 	{
 		name: 'Java',
 		image: 'https://api.iconify.design/logos:java.svg',
-		webLink: 'https://www.java.com'
+		webLink: 'https://www.java.com',
+		tags: ['spring', 'android']
 	},
 	{
 		name: 'Python',
 		image: 'https://api.iconify.design/logos:python.svg',
-		webLink: 'https://www.python.org'
+		webLink: 'https://www.python.org',
+		tags: ['ai']
 	},
 	{
 		name: 'Rust',
 		image: 'https://api.iconify.design/vscode-icons:file-type-rust.svg',
-		webLink: 'https://www.rust-lang.org'
+		webLink: 'https://www.rust-lang.org',
+		tags: ['tauri']
 	},
 	{
 		name: 'Latex',
@@ -309,32 +343,38 @@ export const tech: Tech[] = [
 			light: 'https://api.iconify.design/bi:unity.svg?color=%23ffffff',
 			dark: 'https://api.iconify.design/bi:unity.svg?color=%23000000'
 		},
-		webLink: 'https://unity.com'
+		webLink: 'https://unity.com',
+		tags: ['c#', 'csharp']
 	},
 	{
 		name: 'React',
 		image: 'https://api.iconify.design/devicon:react.svg',
-		webLink: 'https://react.dev'
+		webLink: 'https://react.dev',
+		tags: ['nextjs', 'typescript', 'javascript', 'vite']
 	},
 	{
 		name: 'C#',
 		image: 'https://api.iconify.design/devicon:csharp.svg',
-		webLink: 'https://learn.microsoft.com/pl-pl/dotnet/csharp/'
+		webLink: 'https://learn.microsoft.com/pl-pl/dotnet/csharp/',
+		tags: ['dotnet', '.net', 'unity']
 	},
 	{
 		name: 'Sass',
 		image: 'https://api.iconify.design/devicon:sass.svg',
-		webLink: 'https://sass-lang.com'
+		webLink: 'https://sass-lang.com',
+		tags: ['scss', 'css']
 	},
 	{
 		name: 'Javascript',
 		image: 'https://api.iconify.design/devicon:javascript.svg',
-		webLink: 'https://en.wikipedia.org/wiki/JavaScript'
+		webLink: 'https://en.wikipedia.org/wiki/JavaScript',
+		tags: ['typescript']
 	},
 	{
 		name: 'Typescript',
 		image: 'https://api.iconify.design/devicon:typescript.svg',
-		webLink: 'https://www.typescriptlang.org'
+		webLink: 'https://www.typescriptlang.org',
+		tags: ['javascript']
 	},
 	{
 		name: 'HTML',
@@ -344,12 +384,14 @@ export const tech: Tech[] = [
 	{
 		name: 'Next.js',
 		image: 'https://api.iconify.design/logos:nextjs-icon.svg',
-		webLink: 'https://nextjs.org'
+		webLink: 'https://nextjs.org',
+		tags: ['react', 'javascript', 'typescript']
 	},
 	{
 		name: 'CSS',
 		image: 'https://api.iconify.design/devicon:css3.svg',
-		webLink: 'https://en.wikipedia.org/wiki/CSS'
+		webLink: 'https://en.wikipedia.org/wiki/CSS',
+		tags: ['bootstrap', 'sass', 'tailwind']
 	},
 	{
 		name: 'Express.js',
@@ -357,6 +399,7 @@ export const tech: Tech[] = [
 			light: 'https://api.iconify.design/simple-icons:express.svg?color=%23ffffff',
 			dark: 'https://api.iconify.design/simple-icons:express.svg?color=%23000000'
 		},
-		webLink: 'https://expressjs.com'
+		webLink: 'https://expressjs.com',
+		tags: ['node', 'javascript', 'typescript']
 	}
 ];

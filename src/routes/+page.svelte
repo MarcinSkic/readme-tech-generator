@@ -27,7 +27,16 @@
 		availableTechnologies = techList.filter((t) => !t.selected);
 		if (searchQuery !== '') {
 			const fuse = new Fuse(availableTechnologies, {
-				keys: ['name'],
+				keys: [
+					{
+						name: 'name',
+						weight: 3
+					},
+					{
+						name: 'tags',
+						weight: 1
+					}
+				],
 				threshold: 0.4
 			});
 
