@@ -35,7 +35,7 @@
 		}
 	}}
 >
-	<Card.Root class="cursor-pointer transition-colors hover:border-primary">
+	<Card.Root class="cursor-pointer select-none transition-colors hover:border-primary">
 		<Card.Header>
 			<Card.Title>{tech.name}</Card.Title>
 		</Card.Header>
