@@ -17,9 +17,9 @@
 </svelte:head>
 <Toaster />
 <ModeWatcher />
-<header class="grid w-full grid-cols-3 p-4">
-	<h1 class="flex items-end gap-4 justify-self-start text-4xl font-bold tracking-tight">
-		{@html icon}
+<header class="grid w-full grid-cols-[max-content_repeat(2,_minmax(0,_1fr))] items-center p-4">
+	<h1 class="flex items-end gap-4 justify-self-start text-lg font-bold tracking-tight sm:text-4xl">
+		<div class="w-6 sm:w-9">{@html icon}</div>
 		<span>Readme Tech Generator</span>
 	</h1>
 	<nav>
