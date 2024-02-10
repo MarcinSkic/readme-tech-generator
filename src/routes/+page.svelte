@@ -10,7 +10,7 @@
 	import CodeBlock from '$lib/components/ui/codeBlock/CodeBlock.svelte';
 	import { getCode } from '$lib/codeGeneration';
 
-	const techList: TechInList[] = importedTech.toSorted((a, b) => {
+	const techList: TechInList[] = [...importedTech].sort((a, b) => {
 		const aN = a.name.toUpperCase();
 		const bN = b.name.toUpperCase();
 
