@@ -1,38 +1,28 @@
-# create-svelte
+![Baner](./static/baner.png)
+[![Deploy to GitHub Pages](https://github.com/MarcinSkic/readme-tech-generator/actions/workflows/deploy.yml/badge.svg?branch=production)](https://marcinskic.github.io/readme-tech-generator/)
+![License](https://img.shields.io/github/license/marcinskic/readme-tech-generator.svg)
+![Release](https://img.shields.io/github/release/marcinskic/readme-tech-generator.svg)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## Description
 
-## Creating a project
+Website for generating summary of the technology used in repository, suitable for README footer. Technologies and their icons are selected subjectively for my needs. Maybe in the future, I will extend this app to allow users to search Iconify and save their collection to localStorage, but for now, this project is considered finished.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Features
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- List of selectable technologies
+- Fuzzy search
+- Light and dark mode, check icons appearance
+- Generated markdown supports light and dark mode by using `picture` tag
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Showcase
 
-## Developing
+![Page](./static/showcase.png)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+---
 
-```bash
-npm run dev
+### Used technologies
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+[<img align="left" width="26" height="26" alt="Svelte" src="https://api.iconify.design/devicon:svelte.svg" style="padding: 0 20px 16px 0">](https://svelte.dev)
+[<img align="left" width="26" height="26" alt="shadcn-svelte" src="https://api.iconify.design/simple-icons:shadcnui.svg?color=%23eb4f27" style="padding: 0 20px 16px 0">](https://www.shadcn-svelte.com)
+[<img align="left" width="26" height="26" alt="Typescript" src="https://api.iconify.design/devicon:typescript.svg" style="padding: 0 20px 16px 0">](https://www.typescriptlang.org)
+[<img align="left" width="26" height="26" alt="TailwindCSS" src="https://api.iconify.design/devicon:tailwindcss.svg" style="padding: 0 20px 16px 0">](https://tailwindcss.com)
