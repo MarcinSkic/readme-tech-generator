@@ -1,18 +1,27 @@
 <script lang="ts">
+	import '../app.pcss';
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
-	import '../app.pcss';
-	import { ModeWatcher, setMode, mode } from 'mode-watcher';
+
+	import { Sun, Moon } from 'lucide-svelte';
+	import { ModeWatcher, setMode, mode, toggleMode } from 'mode-watcher';
 	import { Toaster } from '$lib/components/ui/sonner';
-	import { tech } from '$lib/tech';
+	import icon from '$lib/icon.svg?raw';
 
 	const links: { href: string; name: string }[] = [];
 	setMode('dark');
 </script>
 
+<svelte:head>
+	<title>Readme Tech Generator</title>
+</svelte:head>
 <Toaster />
 <ModeWatcher />
-<header>
+<header class="grid w-full grid-cols-3 p-4">
+	<h1 class="flex items-end gap-4 justify-self-start text-4xl font-bold tracking-tight">
+		{@html icon}
+		<span>Readme Tech Generator</span>
+	</h1>
 	<nav>
 		{#each links as link}
 			<Button
@@ -22,6 +31,17 @@
 			>
 		{/each}
 	</nav>
+	<div class="justify-self-end">
+		<Button on:click={toggleMode} variant="outline" size="icon">
+			<Sun
+				class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+			/>
+			<Moon
+				class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+			/>
+			<span class="sr-only">Toggle theme</span>
+		</Button>
+	</div>
 </header>
 <main>
 	<slot />
