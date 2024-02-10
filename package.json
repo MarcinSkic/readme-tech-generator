@@ -36,6 +36,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-static": "^3.0.1",
 		"bits-ui": "^0.17.0",
 		"clsx": "^2.1.0",
 		"fuse.js": "^7.0.0",
