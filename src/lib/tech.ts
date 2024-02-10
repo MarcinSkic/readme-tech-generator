@@ -15,6 +15,27 @@ export type TechInList = Tech & {
 
 export const tech: Tech[] = [
 	{
+		name: 'shadcn-vue',
+		image: 'https://api.iconify.design/simple-icons:shadcnui.svg?color=%2341b883',
+		webLink: 'https://www.shadcn-vue.com',
+		tags: ['vue', 'tailwindcss']
+	},
+	{
+		name: 'shadcn-svelte',
+		image: 'https://api.iconify.design/simple-icons:shadcnui.svg?color=%23eb4f27',
+		webLink: 'https://www.shadcn-svelte.com',
+		tags: ['svelte', 'tailwindcss']
+	},
+	{
+		name: 'shadcn/ui',
+		image: {
+			light: 'https://api.iconify.design/simple-icons:shadcnui.svg?color=%23ffffff',
+			dark: 'https://api.iconify.design/simple-icons:shadcnui.svg?color=%23000000'
+		},
+		webLink: 'https://ui.shadcn.com',
+		tags: ['react', 'tailwindcss']
+	},
+	{
 		name: 'Haskell',
 		image: 'https://api.iconify.design/logos:haskell-icon.svg',
 		webLink: 'https://en.wikipedia.org/wiki/Haskell'
@@ -287,7 +308,7 @@ export const tech: Tech[] = [
 		name: 'TailwindCSS',
 		image: 'https://api.iconify.design/devicon:tailwindcss.svg',
 		webLink: 'https://tailwindcss.com',
-		tags: ['css']
+		tags: ['css', 'shadcn']
 	},
 	{
 		name: 'Svelte',
