@@ -43,10 +43,12 @@
 		</Button>
 	</div>
 </header>
-<main>
+<main class="pb-16">
 	<slot />
 </main>
-<footer class="flex items-center justify-center gap-4 p-6 text-muted-foreground">
+<footer
+	class="absolute bottom-0 left-0 right-0 flex items-center justify-center gap-4 p-6 text-muted-foreground"
+>
 	<span>Powered by <a href="https://iconify.design">Iconify.</a></span>
 	<span>Made by Marcin Skic</span>
 	<a href="https://github.com/MarcinSkic/readme-tech-generator">
