@@ -31,7 +31,8 @@
 	>
 		<Copy />
 	</Button>
-	<pre class="curstom-scrollbar max-h-72 min-h-20 overflow-auto p-4"><code>{@html highlighted}</code
+	<pre class="curstom-scrollbar max-h-72 min-h-20 overflow-auto p-4 text-zinc-50"><code
+			>{@html highlighted}</code
 		></pre>
 </div>
 
