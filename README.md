@@ -1,4 +1,4 @@
-![Baner](./static/baner.png)
+![Banner](./static/banner.png)
 [![Deploy to GitHub Pages](https://github.com/MarcinSkic/readme-tech-generator/actions/workflows/deploy.yml/badge.svg?branch=production)](https://marcinskic.github.io/readme-tech-generator/)
 ![License](https://img.shields.io/github/license/marcinskic/readme-tech-generator.svg)
 ![Release](https://img.shields.io/github/release/marcinskic/readme-tech-generator.svg)
