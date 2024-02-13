@@ -422,5 +422,53 @@ export const tech: Tech[] = [
 		},
 		webLink: 'https://expressjs.com',
 		tags: ['node', 'javascript', 'typescript']
+	},
+	{
+		name: "Vue.js",
+		image: "https://api.iconify.design/devicon:vuejs.svg",
+		webLink: "https://vuejs.org",
+		tags: ["vue", "vue.js", "javascript", "typescript"]
+	},
+	{
+		name: "Vuetify",
+		image: "https://api.iconify.design/devicon:vuetify.svg",
+		webLink: "https://vuetifyjs.com",
+		tags: ["vue", "vue.js"]
+	},
+	{
+		name: "Nuxtjs",
+		image: "https://api.iconify.design/devicon:nuxtjs.svg",
+		webLink: "https://nuxt.com",
+		tags: ["vue", "vue.js"]
+	},
+	{
+		name: "Vitest",
+		image: "https://api.iconify.design/devicon:vitest.svg",
+		webLink: "https://vitest.dev",
+		tags: ["vite", "testing", "javascript", "typescript"]
+	},
+	{
+		name: "Playwright",
+		image: "https://api.iconify.design/devicon:playwright.svg",
+		webLink: "https://playwright.dev",
+		tags: ["javascript", "typescript", "testing"]
+	},
+	{
+		name: "Pinia",
+		image: "https://api.iconify.design/logos:pinia.svg",
+		webLink: "https://pinia.vuejs.org",
+		tags: ["vue"]
+	},
+	{
+		name: "VueUse",
+		image: "https://api.iconify.design/logos:vueuse.svg",
+		webLink: "https://vueuse.org",
+		tags: ["vue"]
+	},
+	{
+		name: "Apache ECharts",
+		image: "https://api.iconify.design/simple-icons:apacheecharts.svg?color=%23F72C5B",
+		webLink: "https://echarts.apache.org",
+		tags: ["javascript", "charts", "data visualization"]
 	}
 ];
