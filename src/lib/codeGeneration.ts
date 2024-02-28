@@ -21,6 +21,6 @@ export function getCode(techList: TechInList[]) {
 				picture = `<picture align="left"><source media="(prefers-color-scheme: light)" srcset="${tech.image.dark}" /><img align="left" width="${width}" height="${height}" alt="${tech.name}" src="${tech.image.light}" style="padding: 0 20px 16px 0"/></picture>`;
 			}
 
-			return (text += `[${picture}](${tech.webLink})\n`);
+			return (text += `[${picture}](${tech.webLink} "${tech.name}")\n`);
 		}, header);
 }
