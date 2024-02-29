@@ -2,14 +2,19 @@
 	import * as Card from '$lib/components/ui/card';
 	import type { TechInList } from '$lib/tech';
 	import { mode } from 'mode-watcher';
+	import { createEventDispatcher } from 'svelte';
 
 	export let tech: TechInList;
+
+	const dispatch = createEventDispatcher();
 	let img: HTMLImageElement;
 	let height = 4;
 	let width = 4;
 
-	function toggleSelection() {
-		tech.selected = !tech.selected;
+	function onSelection() {
+		dispatch('selected', {
+			tech
+		});
 	}
 
 	if (tech.dimensions) {
@@ -28,10 +33,10 @@
 <div
 	tabindex="0"
 	role="gridcell"
-	on:click={toggleSelection}
+	on:click={onSelection}
 	on:keydown={(e) => {
 		if (e.key === 'Enter') {
-			toggleSelection();
+			onSelection();
 		}
 	}}
 >

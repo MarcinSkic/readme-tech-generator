@@ -10,7 +10,14 @@
 	import CodeBlock from '$lib/components/ui/codeBlock/CodeBlock.svelte';
 	import { getCode } from '$lib/codeGeneration';
 
-	const techList: TechInList[] = [...importedTech].sort((a, b) => {
+	function handleTechSelection(event: CustomEvent<{ tech: TechInList }>) {
+		const tech = event.detail.tech;
+		tech.selected = !tech.selected;
+
+		techList = techList;
+	}
+
+	let techList: TechInList[] = [...importedTech].sort((a, b) => {
 		const aN = a.name.toUpperCase();
 		const bN = b.name.toUpperCase();
 
@@ -67,7 +74,7 @@
 			class="grid auto-rows-auto grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4"
 		>
 			{#each techList.filter((t) => t.selected) as tech}
-				<TechCard bind:tech />
+				<TechCard {tech} on:selected={handleTechSelection} />
 			{/each}
 		</div>
 	</Collapsible.Content>
@@ -80,7 +87,7 @@
 		class="grid auto-rows-auto grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4"
 	>
 		{#each availableTechnologies as tech}
-			<TechCard bind:tech />
+			<TechCard {tech} on:selected={handleTechSelection} />
 		{/each}
 	</div>
 </div>
