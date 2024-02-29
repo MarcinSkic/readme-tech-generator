@@ -14,6 +14,12 @@
 		const tech = event.detail.tech;
 		tech.selected = !tech.selected;
 
+		if (tech.selected) {
+			selectedTechList = [...selectedTechList, tech];
+		} else {
+			selectedTechList = selectedTechList.filter((t) => t.name !== tech.name);
+		}
+
 		techList = techList;
 	}
 
@@ -30,6 +36,7 @@
 		}
 	});
 
+	let selectedTechList: TechInList[] = [];
 	let availableTechnologies = techList.filter((t) => !t.selected);
 	$: {
 		availableTechnologies = techList.filter((t) => !t.selected);
@@ -54,7 +61,7 @@
 
 	let searchQuery = '';
 	let selectedOpen = false;
-	$: code = getCode(techList);
+	$: code = getCode(selectedTechList);
 </script>
 
 <CodeBlock {code} />
@@ -73,7 +80,7 @@
 			role="grid"
 			class="grid auto-rows-auto grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4"
 		>
-			{#each techList.filter((t) => t.selected) as tech}
+			{#each selectedTechList as tech}
 				<TechCard {tech} on:selected={handleTechSelection} />
 			{/each}
 		</div>
