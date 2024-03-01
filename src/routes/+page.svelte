@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Input } from '$lib/components/ui/input';
-	import { tech as importedTech, type Tech, type TechInList } from '$lib/tech';
+	import { type TechInList } from '$lib/tech';
 	import * as Collapsible from '$lib/components/ui/collapsible';
 	import TechCard from '$lib/components/ui/techCard/TechCard.svelte';
 	import { Button } from '$lib/components/ui/button';
@@ -9,6 +9,7 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import CodeBlock from '$lib/components/ui/codeBlock/CodeBlock.svelte';
 	import { getCode } from '$lib/codeGeneration';
+	import { tech as importedTech } from '$lib/stores';
 
 	function handleTechSelection(event: CustomEvent<{ tech: TechInList }>) {
 		const tech = event.detail.tech;
@@ -23,7 +24,7 @@
 		techList = techList;
 	}
 
-	let techList: TechInList[] = [...importedTech].sort((a, b) => {
+	let techList: TechInList[] = [...$importedTech].sort((a, b) => {
 		const aN = a.name.toUpperCase();
 		const bN = b.name.toUpperCase();
 
