@@ -2,20 +2,16 @@
 	import * as Card from '$lib/components/ui/card';
 	import type { TechInList } from '$lib/tech';
 	import { mode } from 'mode-watcher';
-	import { createEventDispatcher } from 'svelte';
+	import { Button } from '../button';
+	import { ArrowRightToLine } from 'lucide-svelte';
 
 	export let tech: TechInList;
+	export let handleTechSelection: (tech: TechInList) => void;
+	export let welpFunction: () => void;
 
-	const dispatch = createEventDispatcher();
 	let img: HTMLImageElement;
 	let height = 4;
 	let width = 4;
-
-	function onSelection() {
-		dispatch('selected', {
-			tech
-		});
-	}
 
 	if (tech.dimensions) {
 		height *= tech.dimensions.heightRatio;
@@ -33,10 +29,12 @@
 <div
 	tabindex="0"
 	role="gridcell"
-	on:click={onSelection}
+	on:click={() => {
+		handleTechSelection(tech);
+	}}
 	on:keydown={(e) => {
 		if (e.key === 'Enter') {
-			onSelection();
+			handleTechSelection(tech);
 		}
 	}}
 >
@@ -45,14 +43,30 @@
 			<Card.Title>{tech.name}</Card.Title>
 		</Card.Header>
 		<Card.Content>
-			<img
-				{src}
-				alt={tech.name}
-				style:--width="{width}rem"
-				style:--height="{height}rem"
-				class="h-[--height] w-[--width] object-contain"
-				bind:this={img}
-			/>
+			<div class="flex items-end justify-between">
+				<img
+					{src}
+					alt={tech.name}
+					style:--width="{width}rem"
+					style:--height="{height}rem"
+					class="h-[--height] w-[--width] object-contain"
+					bind:this={img}
+				/>
+				{#if tech.selected}
+					<Button
+						variant="ghost"
+						size="icon"
+						class={tech.lastInGroup ? '' : 'text-muted' + ' hover:text-background'}
+						on:click={(event) => {
+							event.stopPropagation();
+							welpFunction();
+							tech.lastInGroup = !tech.lastInGroup;
+						}}
+					>
+						<ArrowRightToLine />
+					</Button>
+				{/if}
+			</div>
 		</Card.Content>
 	</Card.Root>
 </div>

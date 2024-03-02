@@ -13,12 +13,15 @@ export function getCode(selectedTechList: TechInList[]) {
 		const height = defaultSize_px * (tech.dimensions?.heightRatio ?? 1);
 		let picture = '';
 
+		let alignment = tech.lastInGroup ? '' : ' align="left"';
+		let lineSpacing = tech.lastInGroup ? '\n\n' : '\n';
+
 		if (typeof tech.image === 'string') {
-			picture = `<img align="left" width="${width}" height="${height}" alt="${tech.name}" src="${tech.image}" style="padding: 0 20px 16px 0">`;
+			picture = `<img${alignment} width="${width}" height="${height}" alt="${tech.name}" src="${tech.image}" style="padding: 0 20px 16px 0">`;
 		} else {
-			picture = `<picture align="left"><source media="(prefers-color-scheme: light)" srcset="${tech.image.dark}" /><img align="left" width="${width}" height="${height}" alt="${tech.name}" src="${tech.image.light}" style="padding: 0 20px 16px 0"/></picture>`;
+			picture = `<picture><source media="(prefers-color-scheme: light)" srcset="${tech.image.dark}" /><img${alignment} width="${width}" height="${height}" alt="${tech.name}" src="${tech.image.light}" style="padding: 0 20px 16px 0"/></picture>`;
 		}
 
-		return (text += `[${picture}](${tech.webLink} "${tech.name}")\n`);
+		return (text += `[${picture}](${tech.webLink} "${tech.name}")${lineSpacing}`);
 	}, header);
 }

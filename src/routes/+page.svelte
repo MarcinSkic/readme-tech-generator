@@ -12,17 +12,21 @@
 	import { tech as importedTech } from '$lib/stores';
 	import { Trash2 } from 'lucide-svelte';
 
-	function handleTechSelection(event: CustomEvent<{ tech: TechInList }>) {
-		const tech = event.detail.tech;
+	function handleTechSelection(tech: TechInList) {
 		tech.selected = !tech.selected;
 
 		if (tech.selected) {
+			tech.lastInGroup = false;
 			selectedTechList = [...selectedTechList, tech];
 		} else {
 			selectedTechList = selectedTechList.filter((t) => t.name !== tech.name);
 		}
 
 		techList = techList;
+	}
+
+	function welpFunction() {
+		selectedTechList = selectedTechList; // ¯\_(ツ)_/¯
 	}
 
 	let techList: TechInList[] = [...$importedTech].sort((a, b) => {
@@ -80,7 +84,9 @@
 		</Collapsible.Trigger>
 		<Button
 			on:click={() => {
+				selectedTechList.forEach((e) => (e.selected = false));
 				selectedTechList = [];
+				availableTechnologies = availableTechnologies; // ¯\_(ツ)_/¯
 			}}
 			variant="destructive"
 			size="icon"><Trash2 /></Button
@@ -92,7 +98,7 @@
 			class="grid auto-rows-auto grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4"
 		>
 			{#each selectedTechList as tech}
-				<TechCard {tech} on:selected={handleTechSelection} />
+				<TechCard {tech} {handleTechSelection} {welpFunction} />
 			{/each}
 		</div>
 	</Collapsible.Content>
@@ -105,7 +111,7 @@
 		class="grid auto-rows-auto grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4"
 	>
 		{#each availableTechnologies as tech}
-			<TechCard {tech} on:selected={handleTechSelection} />
+			<TechCard {tech} {handleTechSelection} {welpFunction} />
 		{/each}
 	</div>
 </div>
