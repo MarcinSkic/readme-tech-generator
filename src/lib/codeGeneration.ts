@@ -1,16 +1,15 @@
 import type { TechInList } from './tech';
 
-const defaultSize_px = 26;
 const header = `---
 
 ### Used technologies
 
 `;
 
-export function getCode(selectedTechList: TechInList[]) {
+export function getCode(selectedTechList: TechInList[], iconSize: number) {
 	return selectedTechList.reduce((text, tech) => {
-		const width = defaultSize_px * (tech.dimensions?.widthRatio ?? 1);
-		const height = defaultSize_px * (tech.dimensions?.heightRatio ?? 1);
+		const width = iconSize * (tech.dimensions?.widthRatio ?? 1);
+		const height = iconSize * (tech.dimensions?.heightRatio ?? 1);
 		let picture = '';
 
 		let alignment = tech.lastInGroup ? '' : ' align="left"';

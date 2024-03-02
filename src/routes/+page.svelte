@@ -11,6 +11,7 @@
 	import { getCode } from '$lib/codeGeneration';
 	import { tech as importedTech } from '$lib/stores';
 	import { Trash2 } from 'lucide-svelte';
+	import { Label } from '$lib/components/ui/label';
 
 	function handleTechSelection(tech: TechInList) {
 		tech.selected = !tech.selected;
@@ -65,14 +66,25 @@
 		}
 	}
 
+	let iconSize = 26;
 	let searchQuery = '';
 	let selectedOpen = false;
-	$: code = getCode(selectedTechList);
+	$: code = getCode(selectedTechList, iconSize);
 </script>
 
 <CodeBlock {code} />
 <Separator />
 <Collapsible.Root bind:open={selectedOpen} class="mx-4 mt-2 space-y-4">
+	<div class="ml-4 flex items-center gap-2">
+		<Label for="iconSizeInput">Icon size</Label>
+		<Input
+			class="w-28 text-xl"
+			id="iconSizeInput"
+			bind:value={iconSize}
+			placeholder="Icon size"
+			type="number"
+		/>
+	</div>
 	<div class="flex gap-4">
 		<Collapsible.Trigger>
 			<Button variant="ghost" class="gap-1">
