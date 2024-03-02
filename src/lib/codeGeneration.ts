@@ -1,12 +1,6 @@
 import type { TechInList } from './tech';
 
-const header = `---
-
-### Used technologies
-
-`;
-
-export function getCode(selectedTechList: TechInList[], iconSize: number) {
+export function getCode(selectedTechList: TechInList[], iconSize: number, header: string) {
 	return selectedTechList.reduce((text, tech) => {
 		const width = iconSize * (tech.dimensions?.widthRatio ?? 1);
 		const height = iconSize * (tech.dimensions?.heightRatio ?? 1);
@@ -22,5 +16,5 @@ export function getCode(selectedTechList: TechInList[], iconSize: number) {
 		}
 
 		return (text += `[${picture}](${tech.webLink} "${tech.name}")${lineSpacing}`);
-	}, header);
+	}, header+(header.length ? "\n\n" : ""));
 }

@@ -12,6 +12,7 @@
 	import { tech as importedTech } from '$lib/stores';
 	import { Trash2 } from 'lucide-svelte';
 	import { Label } from '$lib/components/ui/label';
+	import { Textarea } from '$lib/components/ui/textarea';
 
 	function handleTechSelection(tech: TechInList) {
 		tech.selected = !tech.selected;
@@ -68,8 +69,11 @@
 
 	let iconSize = 26;
 	let searchQuery = '';
+	let headerText = `---
+
+### Used technologies`;
 	let selectedOpen = false;
-	$: code = getCode(selectedTechList, iconSize);
+	$: code = getCode(selectedTechList, iconSize, headerText);
 </script>
 
 <CodeBlock {code} />
@@ -83,6 +87,15 @@
 			bind:value={iconSize}
 			placeholder="Icon size"
 			type="number"
+		/>
+	</div>
+	<div class="ml-4">
+		<Label for="headerTextInput">Header</Label>
+		<Textarea
+			class="mt-2 h-20"
+			id="headerTextInput"
+			bind:value={headerText}
+			placeholder="Header text"
 		/>
 	</div>
 	<div class="flex gap-4">
