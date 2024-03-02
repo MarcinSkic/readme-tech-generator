@@ -10,6 +10,7 @@
 	import CodeBlock from '$lib/components/ui/codeBlock/CodeBlock.svelte';
 	import { getCode } from '$lib/codeGeneration';
 	import { tech as importedTech } from '$lib/stores';
+	import { Trash2 } from 'lucide-svelte';
 
 	function handleTechSelection(event: CustomEvent<{ tech: TechInList }>) {
 		const tech = event.detail.tech;
@@ -68,14 +69,23 @@
 <CodeBlock {code} />
 <Separator />
 <Collapsible.Root bind:open={selectedOpen} class="mx-4 mt-2 space-y-4">
-	<Collapsible.Trigger>
-		<Button variant="ghost" class="gap-1">
-			<h4 class="text-base font-semibold">Selected</h4>
-			<div class:selected-open={selectedOpen}>
-				<ChevronUp />
-			</div>
-		</Button>
-	</Collapsible.Trigger>
+	<div class="flex gap-4">
+		<Collapsible.Trigger>
+			<Button variant="ghost" class="gap-1">
+				<h4 class="text-base font-semibold">Selected</h4>
+				<div class:selected-open={selectedOpen}>
+					<ChevronUp />
+				</div>
+			</Button>
+		</Collapsible.Trigger>
+		<Button
+			on:click={() => {
+				selectedTechList = [];
+			}}
+			variant="destructive"
+			size="icon"><Trash2 /></Button
+		>
+	</div>
 	<Collapsible.Content transitionConfig={{ duration: 500 }}>
 		<div
 			role="grid"
