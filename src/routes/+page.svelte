@@ -13,6 +13,7 @@
 	import { Trash2 } from 'lucide-svelte';
 	import { Label } from '$lib/components/ui/label';
 	import { Textarea } from '$lib/components/ui/textarea';
+	import { Switch } from '$lib/components/ui/switch';
 
 	function handleTechSelection(tech: TechInList) {
 		tech.selected = !tech.selected;
@@ -69,11 +70,12 @@
 
 	let iconSize = 26;
 	let searchQuery = '';
+	let generateBadges = false;
 	let headerText = `---
 
 ### Used technologies`;
 	let selectedOpen = false;
-	$: code = getCode(selectedTechList, iconSize, headerText);
+	$: code = getCode(selectedTechList, iconSize, headerText, generateBadges);
 </script>
 
 <CodeBlock {code} />
@@ -88,6 +90,10 @@
 			placeholder="Icon size"
 			type="number"
 		/>
+	</div>
+	<div class="ml-4 flex items-center gap-2">
+		<Label for="toggleBadgesSwitch">Display badges</Label>
+		<Switch id="toggleBadgesSwitch" bind:checked={generateBadges} />
 	</div>
 	<div class="ml-4">
 		<Label for="headerTextInput">Header</Label>
