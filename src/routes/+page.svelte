@@ -71,11 +71,12 @@
 	let iconSize = 26;
 	let searchQuery = '';
 	let generateBadges = false;
-	let headerText = `---
+	let generateTable = false;
+	let headerText = ` ---
 
 ### Used technologies`;
 	let selectedOpen = false;
-	$: code = getCode(selectedTechList, iconSize, headerText, generateBadges);
+	$: code = getCode(selectedTechList, iconSize, headerText, generateBadges, generateTable);
 </script>
 
 <CodeBlock {code} />
@@ -92,8 +93,12 @@
 		/>
 	</div>
 	<div class="ml-4 flex items-center gap-2">
-		<Label for="toggleBadgesSwitch">Display badges</Label>
+		<Label for="toggleBadgesSwitch">Generate badges</Label>
 		<Switch id="toggleBadgesSwitch" bind:checked={generateBadges} />
+	</div>
+	<div class="ml-4 flex items-center gap-2">
+		<Label for="toggleTableSwitch">Generate as table</Label>
+		<Switch id="toggleTableSwitch" bind:checked={generateTable} />
 	</div>
 	<div class="ml-4">
 		<Label for="headerTextInput">Header</Label>
