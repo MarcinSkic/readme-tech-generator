@@ -5,6 +5,8 @@
 	import TechCard from '$lib/components/ui/techCard/TechCard.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { ChevronUp } from 'lucide-svelte';
+	import { Table } from 'lucide-svelte';
+	import { RectangleHorizontal } from 'lucide-svelte';
 	import Fuse from 'fuse.js';
 	import { Separator } from '$lib/components/ui/separator';
 	import CodeBlock from '$lib/components/ui/codeBlock/CodeBlock.svelte';
@@ -14,6 +16,7 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Switch } from '$lib/components/ui/switch';
+	import * as ToggleGroup from '$lib/components/ui/toggle-group';
 
 	function handleTechSelection(tech: TechInList) {
 		tech.selected = !tech.selected;
@@ -76,7 +79,10 @@
 
 ### Used technologies`;
 	let selectedOpen = false;
-	$: code = getCode(selectedTechList, iconSize, headerText, generateBadges, generateTable);
+
+	let layoutFlags: string[] = [];
+
+	$: code = getCode(selectedTechList, iconSize, headerText, layoutFlags);
 </script>
 
 <CodeBlock {code} />
@@ -92,14 +98,16 @@
 			type="number"
 		/>
 	</div>
-	<div class="ml-4 flex items-center gap-2">
-		<Label for="toggleBadgesSwitch">Generate badges</Label>
-		<Switch id="toggleBadgesSwitch" bind:checked={generateBadges} />
+
+	<div class="ml-4 flex w-fit items-center">
+		<div class="mr-4">Layout</div>
+		<ToggleGroup.Root type="multiple" bind:value={layoutFlags}>
+			<ToggleGroup.Item value="badges"><RectangleHorizontal></RectangleHorizontal></ToggleGroup.Item
+			>
+			<ToggleGroup.Item value="table"><Table></Table></ToggleGroup.Item>
+		</ToggleGroup.Root>
 	</div>
-	<div class="ml-4 flex items-center gap-2">
-		<Label for="toggleTableSwitch">Generate as table</Label>
-		<Switch id="toggleTableSwitch" bind:checked={generateTable} />
-	</div>
+
 	<div class="ml-4">
 		<Label for="headerTextInput">Header</Label>
 		<Textarea

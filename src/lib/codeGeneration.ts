@@ -7,7 +7,10 @@ function generateBadge(text: string, iconSize: number, generateTable: boolean = 
 	return `<img src="https://img.shields.io/badge/${encodeURIComponent(text)}-%232378ab" width="${WIDTH_PER_ICON_MULTIPLIER * text.length * iconSize + WIDTH_BASE_MULTIPLIER * iconSize}" height="${iconSize}" alt="${text}" ${generateTable ? '' : 'align="left"'} style="padding: 0 20px 16px 0">\n\n`;
 }
 
-export function getCode(selectedTechList: TechInList[], iconSize: number, header: string, generateBadges: boolean, generateTable: boolean) {
+export function getCode(selectedTechList: TechInList[], iconSize: number, header: string, layoutFlags: string[]) {
+	const generateTable = layoutFlags.includes('table');
+	const generateBadges = layoutFlags.includes('badges');
+
 	let nextGroupNumber = 1;
 	let result = header+(header.length ? "\n\n" : "");
 	if (generateTable) {
