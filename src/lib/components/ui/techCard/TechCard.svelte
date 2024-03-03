@@ -4,6 +4,7 @@
 	import { mode } from 'mode-watcher';
 	import { Button } from '../button';
 	import { ArrowRightToLine } from 'lucide-svelte';
+	import * as Tooltip from '$lib/components/ui/tooltip';
 
 	export let tech: TechInList;
 	export let handleTechSelection: (tech: TechInList) => void;
@@ -53,18 +54,25 @@
 					bind:this={img}
 				/>
 				{#if tech.selected}
-					<Button
-						variant="ghost"
-						size="icon"
-						class={tech.lastInGroup ? '' : 'text-muted' + ' hover:text-background'}
-						on:click={(event) => {
-							event.stopPropagation();
-							welpFunction();
-							tech.lastInGroup = !tech.lastInGroup;
-						}}
-					>
-						<ArrowRightToLine />
-					</Button>
+					<Tooltip.Root>
+						<Tooltip.Trigger>
+							<Button
+								variant="ghost"
+								size="icon"
+								class={tech.lastInGroup ? '' : 'text-muted' + ' hover:text-background'}
+								on:click={(event) => {
+									event.stopPropagation();
+									welpFunction();
+									tech.lastInGroup = !tech.lastInGroup;
+								}}
+							>
+								<ArrowRightToLine />
+							</Button>
+						</Tooltip.Trigger>
+						<Tooltip.Content>
+							<p>Toggle end of row</p>
+						</Tooltip.Content>
+					</Tooltip.Root>
 				{/if}
 			</div>
 		</Card.Content>

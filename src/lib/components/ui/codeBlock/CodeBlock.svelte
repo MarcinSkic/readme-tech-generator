@@ -5,6 +5,7 @@
 	import { Button } from '../button';
 	import { Copy } from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
+	import * as Tooltip from '$lib/components/ui/tooltip';
 
 	export let code: string;
 	let highlighted = '';
@@ -23,14 +24,24 @@
 </script>
 
 <div class="relative m-4 rounded-xl bg-stone-900">
-	<Button
-		variant="ghost"
-		size="icon"
-		class="absolute right-3 top-3 box-content p-1 text-stone-50 hover:bg-stone-700 hover:text-stone-50"
-		on:click={onCopy}
-	>
-		<Copy />
-	</Button>
+	<div class="absolute right-3 top-3">
+		<Tooltip.Root>
+			<Tooltip.Trigger>
+				<Button
+					variant="ghost"
+					size="icon"
+					class="box-content p-1 text-stone-50 hover:bg-stone-700 hover:text-stone-50"
+					on:click={onCopy}
+				>
+					<Copy />
+				</Button>
+			</Tooltip.Trigger>
+			<Tooltip.Content>
+				<p>Copy to clipboard</p>
+			</Tooltip.Content>
+		</Tooltip.Root>
+	</div>
+
 	<pre class="curstom-scrollbar h-72 overflow-auto p-4 text-zinc-50"><code>{@html highlighted}</code
 		></pre>
 </div>

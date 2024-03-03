@@ -15,8 +15,8 @@
 	import { Trash2 } from 'lucide-svelte';
 	import { Label } from '$lib/components/ui/label';
 	import { Textarea } from '$lib/components/ui/textarea';
-	import { Switch } from '$lib/components/ui/switch';
 	import * as ToggleGroup from '$lib/components/ui/toggle-group';
+	import * as Tooltip from '$lib/components/ui/tooltip';
 
 	function handleTechSelection(tech: TechInList) {
 		tech.selected = !tech.selected;
@@ -73,8 +73,6 @@
 
 	let iconSize = 26;
 	let searchQuery = '';
-	let generateBadges = false;
-	let generateTable = false;
 	let headerText = ` ---
 
 ### Used technologies`;
@@ -102,12 +100,26 @@
 	<div class="ml-4 flex w-fit items-center">
 		<div class="mr-4">Layout</div>
 		<ToggleGroup.Root type="multiple" bind:value={layoutFlags}>
-			<ToggleGroup.Item value="badges"><RectangleHorizontal></RectangleHorizontal></ToggleGroup.Item
-			>
-			<ToggleGroup.Item value="table"><Table></Table></ToggleGroup.Item>
+			<Tooltip.Root>
+				<Tooltip.Trigger>
+					<ToggleGroup.Item value="badges"
+						><RectangleHorizontal></RectangleHorizontal></ToggleGroup.Item
+					>
+				</Tooltip.Trigger>
+				<Tooltip.Content>
+					<p>Generate badges</p>
+				</Tooltip.Content>
+			</Tooltip.Root>
+			<Tooltip.Root>
+				<Tooltip.Trigger>
+					<ToggleGroup.Item value="table"><Table></Table></ToggleGroup.Item>
+				</Tooltip.Trigger>
+				<Tooltip.Content>
+					<p>Generate as table</p>
+				</Tooltip.Content>
+			</Tooltip.Root>
 		</ToggleGroup.Root>
 	</div>
-
 	<div class="ml-4">
 		<Label for="headerTextInput">Header</Label>
 		<Textarea
@@ -126,15 +138,23 @@
 				</div>
 			</Button>
 		</Collapsible.Trigger>
-		<Button
-			on:click={() => {
-				selectedTechList.forEach((e) => (e.selected = false));
-				selectedTechList = [];
-				availableTechnologies = availableTechnologies; // ¯\_(ツ)_/¯
-			}}
-			variant="destructive"
-			size="icon"><Trash2 /></Button
-		>
+
+		<Tooltip.Root>
+			<Tooltip.Trigger>
+				<Button
+					on:click={() => {
+						selectedTechList.forEach((e) => (e.selected = false));
+						selectedTechList = [];
+						availableTechnologies = availableTechnologies; // ¯\_(ツ)_/¯
+					}}
+					variant="destructive"
+					size="icon"><Trash2 /></Button
+				>
+			</Tooltip.Trigger>
+			<Tooltip.Content>
+				<p>Deselect all</p>
+			</Tooltip.Content>
+		</Tooltip.Root>
 	</div>
 	<Collapsible.Content transitionConfig={{ duration: 500 }}>
 		<div
