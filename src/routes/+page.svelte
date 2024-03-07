@@ -166,7 +166,7 @@
 		>
 			<div class="col-span-full"></div>
 			{#each selectedTechList as tech, i}
-				{#if i == 0 || selectedTechList[i - 1].lastInGroup}
+				{#if layoutFlags.length !== 0 && (i == 0 || selectedTechList[i - 1].lastInGroup)}
 					<div class="col-span-full"></div>
 					<Input
 						class="col-span-full w-96 text-xl"
