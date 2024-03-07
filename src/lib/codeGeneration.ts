@@ -39,14 +39,14 @@ export function getCode(
 		}
 
 		if (startsRow) {
+			let groupName = tech.nameOfStartedGroup ?? `row ${nextGroupNumber}`;
 			if (generateTable) {
-				let groupName = tech.nameOfStartedGroup ?? `row ${nextGroupNumber}`;
 				if (generateBadges) {
 					groupName = generateBadge(groupName, iconSize, true);
 				}
 				result += `<tr><td>${groupName}</td><td>\n\n`;
 			} else if (generateBadges) {
-				result += generateBadge('badge' + nextGroupNumber, iconSize);
+				result += generateBadge(groupName, iconSize);
 			}
 			nextGroupNumber++;
 		}
