@@ -86,40 +86,6 @@
 <CodeBlock {code} />
 <Separator />
 <Collapsible.Root bind:open={selectedOpen} class="mx-4 mt-2 space-y-4">
-	<div class="ml-4 flex items-center gap-2">
-		<Label for="iconSizeInput">Icon size</Label>
-		<Input
-			class="w-28 text-xl"
-			id="iconSizeInput"
-			bind:value={iconSize}
-			placeholder="Icon size"
-			type="number"
-		/>
-	</div>
-
-	<div class="ml-4 flex w-fit items-center">
-		<div class="mr-4">Layout</div>
-		<ToggleGroup.Root type="multiple" bind:value={layoutFlags}>
-			<Tooltip.Root>
-				<Tooltip.Trigger>
-					<ToggleGroup.Item value="badges"
-						><RectangleHorizontal></RectangleHorizontal></ToggleGroup.Item
-					>
-				</Tooltip.Trigger>
-				<Tooltip.Content>
-					<p>Generate badges</p>
-				</Tooltip.Content>
-			</Tooltip.Root>
-			<Tooltip.Root>
-				<Tooltip.Trigger>
-					<ToggleGroup.Item value="table"><Table></Table></ToggleGroup.Item>
-				</Tooltip.Trigger>
-				<Tooltip.Content>
-					<p>Generate as table</p>
-				</Tooltip.Content>
-			</Tooltip.Root>
-		</ToggleGroup.Root>
-	</div>
 	<div class="ml-4">
 		<Label for="headerTextInput">Header</Label>
 		<Textarea
@@ -129,9 +95,46 @@
 			placeholder="Header text"
 		/>
 	</div>
+
+	<div class="flex items-center gap-4">
+		<div class="ml-4 flex w-fit items-center">
+			<Label class="mr-4">Layout</Label>
+			<ToggleGroup.Root type="multiple" bind:value={layoutFlags}>
+				<Tooltip.Root>
+					<Tooltip.Trigger>
+						<ToggleGroup.Item value="badges"
+							><RectangleHorizontal></RectangleHorizontal></ToggleGroup.Item
+						>
+					</Tooltip.Trigger>
+					<Tooltip.Content>
+						<p>Generate badges</p>
+					</Tooltip.Content>
+				</Tooltip.Root>
+				<Tooltip.Root>
+					<Tooltip.Trigger>
+						<ToggleGroup.Item value="table"><Table></Table></ToggleGroup.Item>
+					</Tooltip.Trigger>
+					<Tooltip.Content>
+						<p>Generate as table</p>
+					</Tooltip.Content>
+				</Tooltip.Root>
+			</ToggleGroup.Root>
+		</div>
+		<div class="ml-4 flex items-center gap-2">
+			<Label for="iconSizeInput">Icon size</Label>
+			<Input
+				class="w-28 text-xl"
+				id="iconSizeInput"
+				bind:value={iconSize}
+				placeholder="Icon size"
+				type="number"
+			/>
+		</div>
+	</div>
+
 	<div class="flex gap-4">
 		<Collapsible.Trigger>
-			<Button variant="ghost" class="gap-1">
+			<Button variant="outline" class="gap-1">
 				<h4 class="text-base font-semibold">Selected</h4>
 				<div class:selected-open={selectedOpen}>
 					<ChevronUp />
