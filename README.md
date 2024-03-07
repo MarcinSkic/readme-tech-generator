@@ -18,6 +18,18 @@ Website for generating summary of the technology used in repository, suitable fo
 
 ![Page](./static/showcase.png)
 
+## Contributors
+
+Thanks go to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<table>
+    <tbody>
+        <tr>
+            <td align="center" valign="top" width="14.28%"><a href="https://github.com/FilipTarajko"><img src="https://avatars.githubusercontent.com/u/76916685?v=4" width="100px;" alt="profile"/><br /><sub><b>Filip Tarajko</b></sub></a><br /><a href="https://github.com/MarcinSkic/readme-tech-generator/commits?author=FilipTarajko" title="Code">💻</a></td>
+        </tr>
+    </tbody>
+</table>
+
 ---
 
 ### Used technologies
