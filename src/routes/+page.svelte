@@ -161,7 +161,17 @@
 			role="grid"
 			class="grid auto-rows-auto grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4"
 		>
-			{#each selectedTechList as tech}
+			<div class="col-span-full"></div>
+			{#each selectedTechList as tech, i}
+				{#if i == 0 || selectedTechList[i - 1].lastInGroup}
+					<div class="col-span-full"></div>
+					<Input
+						class="col-span-full w-96 text-xl"
+						id={'groupInput' + tech.name}
+						bind:value={selectedTechList[i].nameOfStartedGroup}
+						placeholder={`${selectedTechList[i].name}'s group`}
+					/>
+				{/if}
 				<TechCard {tech} {handleTechSelection} {welpFunction} />
 			{/each}
 		</div>
