@@ -12,4 +12,5 @@ export interface Tech {
 export type TechInList = Tech & {
 	selected?: boolean;
 	lastInGroup?: boolean;
+	nameOfStartedGroup?: string;
 };

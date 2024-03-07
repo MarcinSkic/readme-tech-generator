@@ -5,6 +5,8 @@
 	import TechCard from '$lib/components/ui/techCard/TechCard.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { ChevronUp } from 'lucide-svelte';
+	import { Table } from 'lucide-svelte';
+	import { RectangleHorizontal } from 'lucide-svelte';
 	import Fuse from 'fuse.js';
 	import { Separator } from '$lib/components/ui/separator';
 	import CodeBlock from '$lib/components/ui/codeBlock/CodeBlock.svelte';
@@ -12,6 +14,9 @@
 	import { tech as importedTech } from '$lib/stores';
 	import { Trash2 } from 'lucide-svelte';
 	import { Label } from '$lib/components/ui/label';
+	import { Textarea } from '$lib/components/ui/textarea';
+	import * as ToggleGroup from '$lib/components/ui/toggle-group';
+	import * as Tooltip from '$lib/components/ui/tooltip';
 
 	function handleTechSelection(tech: TechInList) {
 		tech.selected = !tech.selected;
@@ -68,48 +73,108 @@
 
 	let iconSize = 26;
 	let searchQuery = '';
+	let headerText = ` ---
+
+### Used technologies`;
 	let selectedOpen = false;
-	$: code = getCode(selectedTechList, iconSize);
+
+	let layoutFlags: string[] = [];
+
+	$: code = getCode(selectedTechList, iconSize, headerText, layoutFlags);
 </script>
 
 <CodeBlock {code} />
 <Separator />
 <Collapsible.Root bind:open={selectedOpen} class="mx-4 mt-2 space-y-4">
-	<div class="ml-4 flex items-center gap-2">
-		<Label for="iconSizeInput">Icon size</Label>
-		<Input
-			class="w-28 text-xl"
-			id="iconSizeInput"
-			bind:value={iconSize}
-			placeholder="Icon size"
-			type="number"
+	<div class="ml-4">
+		<Label for="headerTextInput">Header</Label>
+		<Textarea
+			class="mt-2 h-20"
+			id="headerTextInput"
+			bind:value={headerText}
+			placeholder="Header text"
 		/>
 	</div>
+
+	<div class="flex items-center gap-4">
+		<div class="ml-4 flex w-fit items-center">
+			<Label class="mr-4">Layout</Label>
+			<ToggleGroup.Root type="multiple" bind:value={layoutFlags}>
+				<Tooltip.Root>
+					<Tooltip.Trigger>
+						<ToggleGroup.Item value="badges"
+							><RectangleHorizontal></RectangleHorizontal></ToggleGroup.Item
+						>
+					</Tooltip.Trigger>
+					<Tooltip.Content>
+						<p>Generate badges</p>
+					</Tooltip.Content>
+				</Tooltip.Root>
+				<Tooltip.Root>
+					<Tooltip.Trigger>
+						<ToggleGroup.Item value="table"><Table></Table></ToggleGroup.Item>
+					</Tooltip.Trigger>
+					<Tooltip.Content>
+						<p>Generate as table</p>
+					</Tooltip.Content>
+				</Tooltip.Root>
+			</ToggleGroup.Root>
+		</div>
+		<div class="ml-4 flex items-center gap-2">
+			<Label for="iconSizeInput">Icon size</Label>
+			<Input
+				class="w-28 text-xl"
+				id="iconSizeInput"
+				bind:value={iconSize}
+				placeholder="Icon size"
+				type="number"
+			/>
+		</div>
+	</div>
+
 	<div class="flex gap-4">
 		<Collapsible.Trigger>
-			<Button variant="ghost" class="gap-1">
+			<Button variant="outline" class="gap-1">
 				<h4 class="text-base font-semibold">Selected</h4>
 				<div class:selected-open={selectedOpen}>
 					<ChevronUp />
 				</div>
 			</Button>
 		</Collapsible.Trigger>
-		<Button
-			on:click={() => {
-				selectedTechList.forEach((e) => (e.selected = false));
-				selectedTechList = [];
-				availableTechnologies = availableTechnologies; // ¯\_(ツ)_/¯
-			}}
-			variant="destructive"
-			size="icon"><Trash2 /></Button
-		>
+
+		<Tooltip.Root>
+			<Tooltip.Trigger>
+				<Button
+					on:click={() => {
+						selectedTechList.forEach((e) => (e.selected = false));
+						selectedTechList = [];
+						availableTechnologies = availableTechnologies; // ¯\_(ツ)_/¯
+					}}
+					variant="destructive"
+					size="icon"><Trash2 /></Button
+				>
+			</Tooltip.Trigger>
+			<Tooltip.Content>
+				<p>Deselect all</p>
+			</Tooltip.Content>
+		</Tooltip.Root>
 	</div>
 	<Collapsible.Content transitionConfig={{ duration: 500 }}>
 		<div
 			role="grid"
 			class="grid auto-rows-auto grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4"
 		>
-			{#each selectedTechList as tech}
+			<div class="col-span-full"></div>
+			{#each selectedTechList as tech, i}
+				{#if layoutFlags.length !== 0 && (i == 0 || selectedTechList[i - 1].lastInGroup)}
+					<div class="col-span-full"></div>
+					<Input
+						class="col-span-full w-96 text-xl"
+						id={'groupInput' + tech.name}
+						bind:value={selectedTechList[i].nameOfStartedGroup}
+						placeholder={`${selectedTechList[i].name}'s group`}
+					/>
+				{/if}
 				<TechCard {tech} {handleTechSelection} {welpFunction} />
 			{/each}
 		</div>
