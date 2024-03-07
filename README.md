@@ -11,12 +11,17 @@ Website for generating summary of the technology used in repository, suitable fo
 
 - List of selectable technologies
 - Fuzzy search
+- Generation of badges and table based layout
 - Light and dark mode, check icons appearance
 - Generated markdown supports light and dark mode by using `picture` tag
 
 ## Showcase
 
-![Page](./static/showcase.png)
+![Page](./static/tech_list.png)
+
+<br/>
+
+![Page](./static/customization.png)
 
 ## Contributors
 
