@@ -7,7 +7,7 @@ function generateBadge(text: string, iconSize: number, generateTable: boolean = 
 	const width = Math.round(
 		WIDTH_PER_ICON_MULTIPLIER * text.length * iconSize + WIDTH_BASE_MULTIPLIER * iconSize
 	);
-	return `<img src="https://img.shields.io/badge/${encodeURIComponent(text)}-%232378ab" width="${width}" height="${iconSize}" alt="${text}" ${generateTable ? '' : 'align="left"'} style="padding: 0 20px 16px 0">\n\n`;
+	return `<img src="https://img.shields.io/badge/${encodeURIComponent(text)}-%232378ab" width="${width}" height="${iconSize}" alt="${text}" ${generateTable ? '' : 'align="left"'} style="padding: 0 20px 16px 0"/>\n\n`;
 }
 
 export function getCode(
@@ -36,7 +36,7 @@ export function getCode(
 
 		let picture = '';
 		if (typeof tech.image === 'string') {
-			picture = `<img${alignment} width="${width}" height="${height}" alt="${tech.name}" src="${tech.image}" style="padding: 0 20px 16px 0">`;
+			picture = `<img${alignment} width="${width}" height="${height}" alt="${tech.name}" src="${tech.image}" style="padding: 0 20px 16px 0"/>`;
 		} else {
 			picture = `<picture><source media="(prefers-color-scheme: light)" srcset="${tech.image.dark}" /><img${alignment} width="${width}" height="${height}" alt="${tech.name}" src="${tech.image.light}" style="padding: 0 20px 16px 0"/></picture>`;
 		}
