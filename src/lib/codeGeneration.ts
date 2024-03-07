@@ -4,7 +4,10 @@ const WIDTH_PER_ICON_MULTIPLIER = 0.3;
 const WIDTH_BASE_MULTIPLIER = 0.6;
 
 function generateBadge(text: string, iconSize: number, generateTable: boolean = false) {
-	return `<img src="https://img.shields.io/badge/${encodeURIComponent(text)}-%232378ab" width="${WIDTH_PER_ICON_MULTIPLIER * text.length * iconSize + WIDTH_BASE_MULTIPLIER * iconSize}" height="${iconSize}" alt="${text}" ${generateTable ? '' : 'align="left"'} style="padding: 0 20px 16px 0">\n\n`;
+	const width = Math.round(
+		WIDTH_PER_ICON_MULTIPLIER * text.length * iconSize + WIDTH_BASE_MULTIPLIER * iconSize
+	);
+	return `<img src="https://img.shields.io/badge/${encodeURIComponent(text)}-%232378ab" width="${width}" height="${iconSize}" alt="${text}" ${generateTable ? '' : 'align="left"'} style="padding: 0 20px 16px 0">\n\n`;
 }
 
 export function getCode(
